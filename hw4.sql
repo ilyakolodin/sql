@@ -1,6 +1,6 @@
---дз углубление в SQL
+--РґР· СѓРіР»СѓР±Р»РµРЅРёРµ РІ SQL
 
--- создание схемы БД
+-- СЃРѕР·РґР°РЅРёРµ СЃС…РµРјС‹ Р‘Р”
 
 CREATE TABLE language (
 language_name VARCHAR (50) PRIMARY KEY
@@ -26,7 +26,7 @@ nation_name VARCHAR (50) REFERENCES nation(nation_name),
 PRIMARY key (language_name, nation_name)
 )
 
--- добавление данных
+-- РґРѕР±Р°РІР»РµРЅРёРµ РґР°РЅРЅС‹С…
 
 INSERT INTO language (language_name) VALUES ('language_1'),('language_2'), ('language_3'), ('language_4' ), ('language_5');
 
