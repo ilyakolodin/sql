@@ -1,6 +1,6 @@
---дз углубление в SQL
+--РґР· СѓРіР»СѓР±Р»РµРЅРёРµ РІ SQL
 
--- создание схемы БД
+-- СЃРѕР·РґР°РЅРёРµ СЃС…РµРјС‹ Р‘Р”
 
 CREATE TABLE language (
 language_id serial PRIMARY key,
@@ -29,10 +29,10 @@ nation_id integer REFERENCES nation(nation_id),
 PRIMARY key (language_id, nation_id)
 )
 
--- для удаления таблиц
+-- РґР»СЏ СѓРґР°Р»РµРЅРёСЏ С‚Р°Р±Р»РёС†
 -- drop table language, nation, country, nation_country, language_nation cascade
 
--- добавление данных
+-- РґРѕР±Р°РІР»РµРЅРёРµ РґР°РЅРЅС‹С…
 
 INSERT INTO language (language_name) VALUES ('language_1'),('language_2'), ('language_3'), ('language_4' ), ('language_5');
 
