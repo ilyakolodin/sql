@@ -1,32 +1,38 @@
---РґР· СѓРіР»СѓР±Р»РµРЅРёРµ РІ SQL
+--дз углубление в SQL
 
--- СЃРѕР·РґР°РЅРёРµ СЃС…РµРјС‹ Р‘Р”
+-- создание схемы БД
 
 CREATE TABLE language (
-language_name VARCHAR (50) PRIMARY KEY
+language_id serial PRIMARY key,
+language_name VARCHAR (50)
 )
 
 CREATE TABLE nation (
-nation_name VARCHAR (50) PRIMARY KEY
+nation_id serial PRIMARY key,
+nation_name VARCHAR (50)
 )
 
 CREATE TABLE country (
-country_name VARCHAR (50) PRIMARY KEY
+country_id serial PRIMARY key,
+country_name VARCHAR (50)
 )
 
 CREATE TABLE nation_country (
-nation_name VARCHAR (50) REFERENCES nation(nation_name),
-country_name VARCHAR (50) REFERENCES country(country_name),
-PRIMARY key (nation_name,country_name) 
+nation_id integer REFERENCES nation(nation_id),
+country_id integer REFERENCES country(country_id),
+PRIMARY key (nation_id,country_id) 
 )
 
 CREATE TABLE language_nation (
-language_name VARCHAR (50) REFERENCES language(language_name),
-nation_name VARCHAR (50) REFERENCES nation(nation_name),
-PRIMARY key (language_name, nation_name)
+language_id integer REFERENCES language(language_id),
+nation_id integer REFERENCES nation(nation_id),
+PRIMARY key (language_id, nation_id)
 )
 
--- РґРѕР±Р°РІР»РµРЅРёРµ РґР°РЅРЅС‹С…
+-- для удаления таблиц
+-- drop table language, nation, country, nation_country, language_nation cascade
+
+-- добавление данных
 
 INSERT INTO language (language_name) VALUES ('language_1'),('language_2'), ('language_3'), ('language_4' ), ('language_5');
 
@@ -34,6 +40,7 @@ INSERT INTO nation (nation_name) VALUES ('nation_1'),('nation_2'), ('nation_3'),
 
 INSERT INTO country (country_name) VALUES ('country_1'),('country_2'), ('country_3'), ('country_4' ), ('country_5');
 
-INSERT INTO nation_country (nation_name, country_name) values ('nation_1','country_2'),('nation_3','country_2'),('nation_2','country_4'),('nation_5','country_4'),('nation_3','country_5')
+INSERT INTO nation_country (nation_id, country_id) values (1,2),(3,2),(2,4),(5,4),(3,5)
 
-INSERT INTO language_nation (language_name, nation_name) values ('language_1','nation_1'),('language_1','nation_2'),('language_1','nation_3'),('language_3','nation_1'),('language_3','nation_2')
+INSERT INTO language_nation (language_id, nation_id) values (1,1),(1,2),(1,3),(3,1),(3,2)
+
